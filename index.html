@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TailWind LigueTalk</title>
+
+    <link href="/tailwind.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
+  </head>
+  <body class="relative">
+    <header class="">
+      <nav>
+        <div class="flex p-5 md:px-12 justify-between items-center border-b shadow-md">
+          <figure>
+            <img class="h-14 w-full" src="http://www.liguetalk.com.br/assets/img/logo.png" alt="Logo LigueTalk" />
+          </figure>
+
+          <div class="space-x-3 hidden sm:block">
+            <a class="hover:text-[#4569D9] transition-all duration-300" href="#introducao">Introdução</a>
+            <a class="hover:text-[#4569D9] transition-all duration-300" href="#funcionamento">Como Funciona</a>
+            <a class="hover:text-[#4569D9] transition-all duration-300" href="#contato">Contate-nos</a>
+
+            <a class="font-bold hover:text-[#4569D9] transition-all duration-300 text-lg" href="sistema">Logar</a>
+          </div>
+
+          <div class="btnMenuMobile block sm:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </div>
+        </div>
+        <!-- <div class="menuMobileItems flex flex-col px-2 divide-y-2">
+          <a class="hover:text-[#4569D9] transition-all duration-300 rounded-md p-3.5" href="#introducao">Introdução</a>
+          <a class="hover:text-[#4569D9] transition-all duration-300 rounded-md p-3.5" href="#funcionamento">Como Funciona</a>
+          <a class="hover:text-[#4569D9] transition-all duration-300 rounded-md p-3.5" href="#contato">Contate-nos</a>
+
+          <a class="font-bold bg-gradient-to-r from-blue-600 to-purple-500 text-white hover:shadow-2xl transition-all ease-linear duration-300 rounded-md p-3.5 text-lg" href="sistema">Logar</a>
+        </div> -->
+      </nav>
+    </header>
+
+    <div class="container mx-auto p-4 px-12 ">
+      <div class="grid grid-cols-1 md:grid-cols-2 sm:px-8 sm:py-12 sm:gap-x-8 md:py-16">
+        <div class="w-full p-3">
+          <img class="mx-auto w-full lg:max-w-xl" src="http://liguetalk.com.br/assets/img/pc.png" alt="" />
+        </div>
+        <div class="py-12 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 mx-auto">
+          <h1 class="text-3xl font-bold text-[#333] pb-3">Reduza o esforço, ligue apenas para quem se interessa</h1>
+          <ul class="list-disc space-y-2">
+            <li class="flex items-start">
+              <span class="h-6 flex items-center sm:h-7">
+                <svg class="flex-shrink-0 h-5 w-5 text-purple-500" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </span>
+              <p class="ml-2">
+                Evite
+                <span class="font-bold text-gray-900">agressividade de discagem</span>
+              </p>
+            </li>
+            <li class="flex items-start">
+              <span class="h-6 flex items-center sm:h-7">
+                <svg class="flex-shrink-0 h-5 w-5 text-purple-500" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </span>
+              <p class="ml-2">
+                Mantenha o
+                <span class="font-bold text-gray-900">bom relacionamento</span>
+                com o cliente
+              </p>
+            </li>
+            <li class="flex items-start">
+              <span class="h-6 flex items-center sm:h-7">
+                <svg class="flex-shrink-0 h-5 w-5 text-purple-500" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </span>
+              <p class="ml-2">Divulgue seu produto com <span class="font-bold text-gray-900">custo mínimo</span></p>
+            </li>
+            <li class="flex items-start">
+              <span class="h-6 flex items-center sm:h-7">
+                <svg class="flex-shrink-0 h-5 w-5 text-purple-500" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+              </span>
+              <p class="ml-2"><span class="font-bold text-gray-900">Reduza</span> os gastos com telefonia</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Citação -->
+    <div class="w-full bg-gradient-to-r bg-gradient-to-r from-blue-600 to-purple-500">
+      <h2 class="px-4 py-16 leading-snug align-middle sm:py-14 font-bold text-white text-3xl italic sm:text-4xl text-center">"Uma ferramenta útil para todo tipo de Contact Center"</h2>
+    </div>
+
+    <!-- Pontos Chave -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 sm:px-8 sm:py-12 sm:gap-x-8 md:py-16 md:max-w-screen-xl md:mx-auto">
+      <article class="p-14 pb-0 text-center">
+        <div>
+          <i class="bi bi-record-circle iconeBS text-8xl"></i>
+        </div>
+        <h2 class="pt-5 text-xl font-bold">1: Crie um áudio</h2>
+        <p class="text-gray-600">Descreva o seu produto/promoção diretamente no programa ou carregue um arquivo na Sessão Áudio</p>
+      </article>
+
+      <article class="p-14 pb-0 text-center">
+        <div>
+          <i class="bi bi-card-checklist iconeBS text-8xl"></i>
+        </div>
+        <h2 class="pt-5 text-xl font-bold">2: Crie uma lista</h2>
+        <p class="text-gray-600">Siga o modelo disponível na Sessão Lista para importar os telefones que devem ser contatados</p>
+      </article>
+
+      <article class="p-14 pb-0 text-center">
+        <div>
+          <i class="bi bi-box-arrow-in-up iconeBS text-8xl"></i>
+        </div>
+        <h2 class="pt-5 text-xl font-bold">3: Crie uma campanha</h2>
+        <p class="text-gray-600">Basta associar o áudio e a lista dentro da campanha e começar a discar. A campanha pode ser pausada quando necessário e uma vez concluída, pode ser reiniciada somente para os números não alcançados na primeira discagem</p>
+      </article>
+
+      <article class="p-14 pb-0 text-center">
+        <div>
+          <i class="bi bi-chat-left-text iconeBS text-8xl"></i>
+        </div>
+        <h2 class="pt-5 text-xl font-bold">4: Leed</h2>
+        <p class="text-gray-600">Muita coisa pode acontecer em uma ligação, por isso o operador dispõe do recurso led para registrar o que foi falado. Pode agendar um retorno no sistema, atualizar dados cadastrais, ou simplesmente como softphone</p>
+      </article>
+
+      <article class="p-14 pb-0 text-center">
+        <div>
+          <i class="bi bi-zoom-in iconeBS text-8xl"></i>
+        </div>
+        <h2 class="pt-5 text-xl font-bold">5: Acompanhe os resultados</h2>
+        <p class="text-gray-600">Veja os gráficos gerenciais para saber como estão indo as ligações, os operadores e o resultado final.</p>
+      </article>
+
+      <article class="p-14 pb-0 text-center">
+        <div>
+          <i class="bi bi-headset iconeBS text-8xl"></i>
+        </div>
+        <h2 class="pt-5 text-xl font-bold">6: Monitore</h2>
+        <p class="text-gray-600">Escute as gravações das ligações e saiba como seu operador está negociando. Além de poder realizar a monitoração do ramal de forma online, durante a ligação.</p>
+      </article>
+    </div>
+
+    <!-- Formulário de contato -->
+
+    <div class="w-full px-10 py-10 sm:py-14 bg-gradient-to-r from-purple-500 to-purple-900">
+      <h2 class="pb-7 align-middle font-bold text-white text-3xl sm:text-4xl text-center">Deixe seu recado e entraremos em contato!</h2>
+      <form action="" class="sm:px-8 sm:py-12 sm:gap-x-8 md:py-16 lg:px-52 ">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:max-w-2xl lg:max-w-4xl mx-auto">
+          <input class="rounded p-2 focus:outline-none w-full md:w-11/12 ml-auto col-span-2 sm:col-span-1" type="text" placeholder="Nome" />
+          <input class="rounded p-2 focus:outline-none w-full md:w-11/12 mr-auto col-span-2 sm:col-span-1" type="text" placeholder="Telefone" />
+          <input class="rounded p-2 focus:outline-none w-full md:w-11/12 mx-auto col-span-2" type="text" placeholder="Email" />
+
+          <textarea class="rounded p-2 focus:outline-none w-full md:w-11/12 h-20 mx-auto col-span-2 resize-y" placeholder="Mensagem" name="" id="" cols="30" rows="10"></textarea>
+        </div>
+
+        <button class="mx-auto mt-5 block sm:max-w-xs bg-white text-purple-500 font-bold shadow-2xl rounded p-3 focus:outline-none w-full" type="text" placeholder="Telefone">Enviar</button>
+      </form>
+    </div>
+
+     <footer>
+        <div class="flex justify-center py-5 relative">
+            <figure>
+                <img class="h-14 w-full" src="http://www.liguetalk.com.br/assets/img/logo.png" alt="Logo LigueTalk" />
+            </figure>
+        </div>
+
+        <div class="flex justify-center py-5 text-white bg-gray-800">
+            <p>© LigueTalk 2021. Todos direitos reservados.</p>
+        </div>
+    </footer>
+
+
+  </body>
+</html>
