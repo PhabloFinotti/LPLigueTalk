@@ -16,11 +16,12 @@
 }
 
 form button {
+    /* @apply mx-auto mt-5 block sm:max-w-xs bg-white text-purple-500 font-bold shadow-2xl rounded p-3 focus:outline-none w-full duration-300; */
     box-shadow: 0 15px 15px -15px rgb(0 0 0 / 55%);
 }
 
 form button:hover {
-    box-shadow: 0 15px 15px -10px rgb(0 0 0 / 55%);
+    box-shadow: 0 5px 20px 0px rgb(0 0 0 / 55%);
 }
 
 footer div:first-child {
