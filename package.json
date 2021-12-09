@@ -19,6 +19,7 @@
   "homepage": "https://github.com/PhabloFinotti/LPLigueTalk#readme",
   "devDependencies": {
     "autoprefixer": "^10.4.0",
+    "block-ui": "^2.70.1",
     "postcss": "^8.4.4",
     "tailwindcss": "^2.2.19"
   }

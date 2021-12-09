@@ -20,6 +20,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js" integrity="sha512-d4KkQohk+HswGs6A1d6Gak6Bb9rMWtxjOa0IiY49Q3TeFd5xAzjWXDCBW9RS7m86FQ4RzM2BdHmdJnnKRYknxw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="script.js"></script>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./node_modules/block-ui/jquery.blockUI.js"></script>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-202559059-1">
     </script>
     <script>
@@ -199,7 +202,7 @@
     <div id="contato">
       <h2>Deixe seu recado e entraremos em contato!</h2>
       
-      <form action="enviar.php" method="POST">
+      <form>
         <div class="form__inputs--wrapper">
           <input class="sm:col-span-1 ml-auto" type="text" name="nome" placeholder="Nome" />
           <input class="sm:col-span-1 mr-auto inputphone" type="text" name="telefone" placeholder="Telefone" />
@@ -208,18 +211,77 @@
           <textarea name="mensagem" placeholder="Mensagem" name="" id="" cols="30" rows="10"></textarea>
         </div>
         
-        <button type="submit" placeholder="Telefone">Enviar</button>
+        <button type="submit" class="g-recaptcha" data-sitekey="6LcxuYIdAAAAAOjyiqHZnY7yC3GcYjKxAbFas9P9" data-callback='onSubmit'>Enviar</button>
 
-        <div class="g-recaptcha" data-sitekey="6LcxuYIdAAAAAOjyiqHZnY7yC3GcYjKxAbFas9P9" data-size="invisible"  data-callback='onSubmit'></div>
+        <!-- <div class="g-recaptcha" data-sitekey="6LcxuYIdAAAAAOjyiqHZnY7yC3GcYjKxAbFas9P9" data-size="invisible"  data-callback='onSubmit'></div> -->
       </form>
+      
 
       <script>
-        function onSubmit(token) {
-          e.preventDefault();
-          grecaptcha.execute();
 
-          $('#contato').submit();
-        }
+          function onSubmit() {
+            var response = grecaptcha.getResponse();
+            var nome = $('form [name="nome"]').val() 
+            var email = $('form [name="email"]').val()
+            var telefone = $('form [name="telefone"]').val()
+            var mensagem = $('form [name="mensagem"]').val()
+
+              $.ajax({
+                type: 'POST',
+                url: 'enviar.php',
+                data: {
+                  response: response,
+                  nome: nome, 
+                  email: email, 
+                  telefone: telefone, 
+                  mensagem: mensagem, 
+                },
+                beforeSend : function(){
+                  $.blockUI({
+                      message: 'Aguarde...',
+                      css: {
+                          border: 'none',
+                          padding: '15px',
+                          backgroundColor: '#000',
+                          '-webkit-border-radius': '10px',
+                          '-moz-border-radius': '10px',
+                          opacity: .5,
+                          color: '#fff'
+                      }
+                  });
+                },
+                success: function (data) {
+                  var dataJSON = $.parseJSON(data);
+                  console.log(dataJSON.text);
+                  $.unblockUI({
+                    onUnblock: function(){
+                      Swal.fire({
+                        title: dataJSON.title,
+                        text: dataJSON.text,
+                        icon: dataJSON.icon,
+                        confirmButtonText: dataJSON.confirmButtonText
+                      })
+                    }
+                  })
+                },
+                error: function(data){
+                  var dataJSON = $.parseJSON(data);
+                  $.unblockUI({
+                    onUnblock: function(){
+                      Swal.fire({
+                        title: dataJSON.title,
+                        text: dataJSON.text,
+                        icon: dataJSON.icon,
+                        confirmButtonText: dataJSON.confirmButtonText
+                      })
+                    }
+                  })
+                },
+                cache: false
+              })
+          };
+
+
       </script>
 
     </div>
