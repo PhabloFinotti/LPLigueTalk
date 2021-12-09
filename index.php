@@ -6,15 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TailWind LigueTalk</title>
 
-    <link href="/tailwind.css" rel="stylesheet" />
-    <link href="style.css" rel="stylesheet" />
+    <link href="tailwind.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
 
+    <!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
+
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js" integrity="sha512-d4KkQohk+HswGs6A1d6Gak6Bb9rMWtxjOa0IiY49Q3TeFd5xAzjWXDCBW9RS7m86FQ4RzM2BdHmdJnnKRYknxw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/script.js"></script>
-
+    <script src="script.js"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-202559059-1">
     </script>
@@ -45,7 +49,7 @@
         <div class="relative bg-white top-0 inset-x-0 z-10 flex p-5 md:px-12 lg:px-16 xl:max-w-screen-2xl xl:mx-auto justify-between items-center border-b shadow-md">
           <figure>
             <a href="#introducao" class="scroll">
-              <img class="h-14 w-full" src="/img/logo.png" alt="Logo LigueTalk" />
+              <img class="h-14 w-full" src="img/logo.png" alt="Logo LigueTalk" />
             </a>
           </figure>
 
@@ -85,7 +89,7 @@
     <div id="introducao" class="container mx-auto p-4 px-12">
       <div class="grid grid-cols-1 md:grid-cols-2 sm:px-12 sm:py-12 sm:gap-x-8 md:py-16">
         <div class="w-full p-3">
-          <img class="mx-auto w-full lg:max-w-xl" src="/img/pc.png" alt="" />
+          <img class="mx-auto w-full lg:max-w-xl" src="img/pc.png" alt="" />
         </div>
         <div class="py-12 text-base leading-6 space-y-4 text-gray-800 sm:text-lg sm:leading-7 mx-auto">
           <h1 class="text-3xl font-bold text-[#333] pb-3">Reduza o esforço, ligue apenas para quem se interessa</h1>
@@ -135,12 +139,12 @@
     </div>
 
     <!-- Citação -->
-    <div class="w-full bg-gradient-to-r bg-gradient-to-r from-blue-600 to-purple-500">
+    <div class="w-full bg-gradient-to-r from-blue-600 to-purple-500">
       <h2 class="px-4 py-16 leading-snug align-middle sm:py-14 font-bold text-white text-3xl italic sm:text-4xl text-center">"Uma ferramenta útil para todo tipo de Contact Center"</h2>
     </div>
 
     <!-- Pontos Chave -->
-    <div id="funcionamento" class="grid grid-cols-1 sm:grid-cols-2 sm:px-14 py-12 sm:gap-x-24 md:py-16 md:max-w-screen-xl md:mx-auto">
+    <div id="funcionamento">
       <article class="p-7 text-center">
         <div>
           <i class="bi bi-record-circle iconeBS text-8xl"></i>
@@ -192,20 +196,31 @@
 
     <!-- Formulário de contato -->
 
-    <div id="contato" class="w-full px-10 py-10 sm:py-14 bg-gradient-to-r from-purple-500 to-purple-900">
-      <h2 class="pb-7 align-middle font-bold text-white text-3xl sm:text-4xl text-center">Deixe seu recado e entraremos em contato!</h2>
+    <div id="contato">
+      <h2>Deixe seu recado e entraremos em contato!</h2>
       
-      <form action="enviar.php" class="sm:px-8 sm:py-12 sm:gap-x-8 md:py-16 lg:px-52">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:max-w-2xl lg:max-w-4xl mx-auto">
-          <input class="rounded py-3 px-4 text-center focus:outline-none w-full md:w-11/12 ml-auto col-span-2 sm:col-span-1" type="text" name="nome" placeholder="Nome" />
-          <input class="rounded py-3 px-4 text-center focus:outline-none w-full md:w-11/12 mr-auto col-span-2 sm:col-span-1 inputphone" type="text" name="telefone" placeholder="Telefone" />
-          <input class="rounded py-3 px-4 text-center focus:outline-none w-full md:w-11/12 mx-auto col-span-2" type="email" name="email" placeholder="Email" />
+      <form action="enviar.php" method="POST">
+        <div class="form__inputs--wrapper">
+          <input class="sm:col-span-1 ml-auto" type="text" name="nome" placeholder="Nome" />
+          <input class="sm:col-span-1 mr-auto inputphone" type="text" name="telefone" placeholder="Telefone" />
+          <input class="mx-auto" type="email" name="email" placeholder="Email" />
 
-          <textarea class="rounded py-3 px-4 text-center focus:outline-none w-full md:w-11/12 h-20 sm:h-28 mx-auto col-span-2 resize-y" name="mensagem" placeholder="Mensagem" name="" id="" cols="30" rows="10"></textarea>
+          <textarea name="mensagem" placeholder="Mensagem" name="" id="" cols="30" rows="10"></textarea>
         </div>
+        
+        <button type="submit" placeholder="Telefone">Enviar</button>
 
-        <button class="mx-auto mt-5 block sm:max-w-xs bg-white text-purple-500 font-bold shadow-2xl rounded p-3 focus:outline-none w-full transition-all ease-linear duration-300" type="submit" placeholder="Telefone">Enviar</button>
+        <div class="g-recaptcha" data-sitekey="6LcxuYIdAAAAAOjyiqHZnY7yC3GcYjKxAbFas9P9" data-size="invisible"  data-callback='onSubmit'></div>
       </form>
+
+      <script>
+        function onSubmit(token) {
+          e.preventDefault();
+          grecaptcha.execute();
+
+          $('#contato').submit();
+        }
+      </script>
 
     </div>
 
@@ -213,7 +228,7 @@
       <div class="flex justify-center py-5 relative">
         <a href="#topo" class="scroll">
           <figure>
-            <img class="h-14 w-full" src="/img/logo.png" alt="Logo LigueTalk" />
+            <img class="h-14 w-full" src="img/logo.png" alt="Logo LigueTalk" />
           </figure>
         </a>
       </div>

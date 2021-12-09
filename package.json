@@ -1,5 +1,25 @@
 {
-  "dependencies": {
+  "name": "lpliguetalk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "dev": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhabloFinotti/LPLigueTalk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PhabloFinotti/LPLigueTalk/issues"
+  },
+  "homepage": "https://github.com/PhabloFinotti/LPLigueTalk#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.4",
     "tailwindcss": "^2.2.19"
   }
 }

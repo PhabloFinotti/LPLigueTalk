@@ -13,18 +13,20 @@ $(function () {
 
 
         $('.menu-top a').click(function(){
+            var btnMenuClicked = $(this);
+
             $('.menu-top a').each(function(){
                 $(this).removeClass('active');
             });
 
-            $(this).addClass('active');
+            $('.menu-top a').each(function(){
+                if($(this).attr('href') == btnMenuClicked.attr('href')){
+                    $(this).addClass('active');
+                }
+            })
         });
 
 });
-
-
-
-
 
 
 $(function () {
