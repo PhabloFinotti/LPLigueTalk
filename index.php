@@ -202,24 +202,35 @@
     <div id="contato">
       <h2>Deixe seu recado e entraremos em contato!</h2>
       
-      <form>
+      <form method="POST">
         <div class="form__inputs--wrapper">
-          <input class="sm:col-span-1 ml-auto" type="text" name="nome" placeholder="Nome" />
-          <input class="sm:col-span-1 mr-auto inputphone" type="text" name="telefone" placeholder="Telefone" />
-          <input class="mx-auto" type="email" name="email" placeholder="Email" />
+          <input class="sm:col-span-1 ml-auto" type="text" name="nome" placeholder="Nome" required />
+          <input class="sm:col-span-1 mr-auto inputphone" type="text" name="telefone" placeholder="Telefone"  />
+          <input class="mx-auto" type="email" name="email" placeholder="Email"  />
 
-          <textarea name="mensagem" placeholder="Mensagem" name="" id="" cols="30" rows="10"></textarea>
+          <textarea name="mensagem" placeholder="Mensagem" name="" id="" cols="30" rows="10" ></textarea>
         </div>
         
-        <button type="submit" class="g-recaptcha" data-sitekey="6LcxuYIdAAAAAOjyiqHZnY7yC3GcYjKxAbFas9P9" data-callback='onSubmit'>Enviar</button>
+        <!-- <button type="submit" class="g-recaptcha" data-sitekey="6LcxuYIdAAAAAOjyiqHZnY7yC3GcYjKxAbFas9P9" data-callback='onSubmit'>Enviar</button> -->
 
-        <!-- <div class="g-recaptcha" data-sitekey="6LcxuYIdAAAAAOjyiqHZnY7yC3GcYjKxAbFas9P9" data-size="invisible"  data-callback='onSubmit'></div> -->
+        <div id='recaptcha' class="g-recaptcha"
+          data-sitekey="6LcxuYIdAAAAAOjyiqHZnY7yC3GcYjKxAbFas9P9"></div>
+
+        <button>Enviar</button>
+
       </form>
       
+      <?php var_dump($_POST) ?>
 
       <script>
 
-          function onSubmit() {
+          $('form').submit(function(e) {
+            e.preventDefault();
+            if( grecaptcha.getResponse() == ''){
+              alert('Você precisa marcar o recaptcha!')
+            }
+
+
             var response = grecaptcha.getResponse();
             var nome = $('form [name="nome"]').val() 
             var email = $('form [name="email"]').val()
@@ -280,6 +291,7 @@
                 cache: false
               })
           };
+          )
 
 
       </script>
