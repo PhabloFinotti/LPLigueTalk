@@ -204,81 +204,163 @@
       
       <form>
         <div class="form__inputs--wrapper">
-          <input class="sm:col-span-1 ml-auto" type="text" name="nome" placeholder="Nome" />
-          <input class="sm:col-span-1 mr-auto inputphone" type="text" name="telefone" placeholder="Telefone" />
-          <input class="mx-auto" type="email" name="email" placeholder="Email" />
+          <input class="sm:col-span-1 ml-auto" type="text" name="nome" placeholder="Nome" required/>
+          <input class="sm:col-span-1 mr-auto inputphone" type="text" name="telefone" placeholder="Telefone" required/>
+          <input class="mx-auto" type="email" name="email" placeholder="Email" required />
 
-          <textarea name="mensagem" placeholder="Mensagem" name="" id="" cols="30" rows="10"></textarea>
+          <textarea name="mensagem" placeholder="Mensagem" name="mensagem" cols="30" rows="10" required></textarea>
         </div>
         
-        <button type="submit" class="g-recaptcha" data-sitekey="6LcxuYIdAAAAAOjyiqHZnY7yC3GcYjKxAbFas9P9" data-callback='onSubmit'>Enviar</button>
+        <button id="btnEnviar">Enviar</button>
 
-        <!-- <div class="g-recaptcha" data-sitekey="6LcxuYIdAAAAAOjyiqHZnY7yC3GcYjKxAbFas9P9" data-size="invisible"  data-callback='onSubmit'></div> -->
       </form>
       
 
       <script>
 
-          function onSubmit() {
-            var response = grecaptcha.getResponse();
-            var nome = $('form [name="nome"]').val() 
-            var email = $('form [name="email"]').val()
-            var telefone = $('form [name="telefone"]').val()
-            var mensagem = $('form [name="mensagem"]').val()
+          $('form button').click(function(e){
+            e.preventDefault();
 
-              $.ajax({
-                type: 'POST',
-                url: 'enviar.php',
-                data: {
-                  response: response,
-                  nome: nome, 
-                  email: email, 
-                  telefone: telefone, 
-                  mensagem: mensagem, 
-                },
-                beforeSend : function(){
-                  $.blockUI({
-                      message: 'Aguarde...',
-                      css: {
-                          border: 'none',
-                          padding: '15px',
-                          backgroundColor: '#000',
-                          '-webkit-border-radius': '10px',
-                          '-moz-border-radius': '10px',
-                          opacity: .5,
-                          color: '#fff'
+            var nome = $('form [name="nome"]') 
+            var email = $('form [name="email"]')
+            var telefone = $('form [name="telefone"]')
+            var mensagem = $('form [name="mensagem"]')
+
+            if(nome.val().length == 0){
+              nome.css('border','2px solid #ef4444');
+
+              telefone.css('border', 'none')
+              email.css('border', 'none')
+              mensagem.css('border', 'none')
+
+            }else if(telefone.val().length == 0){
+              telefone.css('border','2px solid #ef4444');
+
+              nome.css('border', 'none')
+              email.css('border', 'none')
+              mensagem.css('border', 'none')
+
+            }else if(email.val().length == 0){
+              email.css('border','2px solid #ef4444');
+
+              nome.css('border', 'none')
+              telefone.css('border', 'none')
+              mensagem.css('border', 'none')
+
+            }else if(!email.val().match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)){
+              email.css('border','2px solid #ef4444');
+
+              nome.css('border', 'none')
+              telefone.css('border', 'none')
+              mensagem.css('border', 'none')
+
+              alert('O campo de email precisa ter @ ou .!')
+
+            }else if(mensagem.val().length == 0){
+              mensagem.css('border','2px solid #ef4444');
+
+              
+              nome.css('border', 'none')
+              telefone.css('border', 'none')
+              email.css('border', 'none')
+            
+            }else{
+
+              var btnEnviar = document.querySelector('#btnEnviar')
+
+              grecaptcha.render(btnEnviar, {
+                'sitekey' : '6LcxuYIdAAAAAOjyiqHZnY7yC3GcYjKxAbFas9P9',
+                'callback': ajaxEnvio
+              });
+              $.blockUI({
+                  message: 'Aguarde...',
+                  css: {
+                      border: 'none',
+                      padding: '15px',
+                      backgroundColor: '#000',
+                      '-webkit-border-radius': '10px',
+                      '-moz-border-radius': '10px',
+                      opacity: .5,
+                      color: '#fff'
+                  }
+              });
+              grecaptcha.execute();
+            }
+          })
+
+          function ajaxEnvio(token) {
+            var response = token;
+            var nome = $('form [name="nome"]') 
+            var email = $('form [name="email"]')
+            var telefone = $('form [name="telefone"]')
+            var mensagem = $('form [name="mensagem"]')
+
+            console.log(nome.val().length)
+
+            if(nome.val().length == 0){
+              nome.css('border','2px solid red');
+            }else if(email.val().length == 0){
+              email.css('border','2px solid red');
+            }else if(telefone.val().length == 0){
+              telefone.css('border','2px solid red');
+            }else if(mensagem.val().length == 0){
+              mensagem.css('border','2px solid red');
+            }else{
+
+                $.ajax({
+                  type: 'POST',
+                  url: 'enviar.php',
+                  data: {
+                    response: response,
+                    nome: nome.val(), 
+                    email: email.val(), 
+                    telefone: telefone.val(), 
+                    mensagem: mensagem.val(), 
+                  },
+                  // beforeSend : function(){
+                  //   $.blockUI({
+                  //       message: 'Aguarde...',
+                  //       css: {
+                  //           border: 'none',
+                  //           padding: '15px',
+                  //           backgroundColor: '#000',
+                  //           '-webkit-border-radius': '10px',
+                  //           '-moz-border-radius': '10px',
+                  //           opacity: .5,
+                  //           color: '#fff'
+                  //       }
+                  //   });
+                  // },
+                  success: function (data) {
+                    var dataJSON = $.parseJSON(data);
+                    console.log(dataJSON.text);
+                    $.unblockUI({
+                      onUnblock: function(){
+                        Swal.fire({
+                          title: dataJSON.title,
+                          text: dataJSON.text,
+                          icon: dataJSON.icon,
+                          confirmButtonText: dataJSON.confirmButtonText
+                        })
                       }
-                  });
-                },
-                success: function (data) {
-                  var dataJSON = $.parseJSON(data);
-                  console.log(dataJSON.text);
-                  $.unblockUI({
-                    onUnblock: function(){
-                      Swal.fire({
-                        title: dataJSON.title,
-                        text: dataJSON.text,
-                        icon: dataJSON.icon,
-                        confirmButtonText: dataJSON.confirmButtonText
-                      })
-                    }
-                  })
-                },
-                error: function(data){
-                  var dataJSON = $.parseJSON(data);
-                  $.unblockUI({
-                    onUnblock: function(){
-                      Swal.fire({
-                        title: dataJSON.title,
-                        text: dataJSON.text,
-                        icon: dataJSON.icon,
-                        confirmButtonText: dataJSON.confirmButtonText
-                      })
-                    }
-                  })
-                },
-                cache: false
-              })
+                    })
+                  },
+                  error: function(data){
+                    var dataJSON = $.parseJSON(data);
+                    $.unblockUI({
+                      onUnblock: function(){
+                        Swal.fire({
+                          title: dataJSON.title,
+                          text: dataJSON.text,
+                          icon: dataJSON.icon,
+                          confirmButtonText: dataJSON.confirmButtonText
+                        })
+                      }
+                    })
+                  },
+                  cache: false
+                })
+            }
           };
 
 
