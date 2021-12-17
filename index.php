@@ -46,17 +46,15 @@
             </script>
             <!--End of Tawk.to Script-->
   </head>
-  <body>
+  <body class="mt-28">
     <header id="topo">
-      <nav>
+      <nav class="fixed inset-x-0 top-0">
         <div class="relative bg-white top-0 inset-x-0 z-10 flex p-5 md:px-12 lg:px-16 xl:max-w-screen-2xl xl:mx-auto justify-between items-center border-b shadow-md">
           <figure>
             <a href="#introducao" class="scroll">
               <img class="h-14 w-full" src="img/logo.png" alt="Logo LigueTalk" />
             </a>
           </figure>
-
-          <!-- <button class="btn" id="google_translate_element" type="button"></button>   -->
 
           <div class="menu-top space-x-3 hidden sm:block">
             <a class="scroll hover:text-blue-600 active transition-all duration-300" href="#introducao">Introdução</a>
@@ -68,9 +66,6 @@
           </div>
 
           <button class="btnMenuMobile block sm:hidden">
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg> -->
             <hr>
             <hr>
             <hr>
@@ -83,7 +78,7 @@
             <a class="scroll text-lg hover:text-[#4569D9] transition-all duration-300 rounded-md p-3.5" href="#funcionamento">Como Funciona</a>
             <a class="scroll text-lg hover:text-[#4569D9] transition-all duration-300 rounded-md p-3.5" href="#contato">Contate-nos</a>
 
-            <a class="font-bold bg-gradient-to-r from-blue-600 to-purple-500 text-white hover:shadow-2xl transition-all ease-linear duration-300 rounded-md p-3.5 text-lg" href="sistema">Logar</a>
+            <a class="font-bold bg-gradient-to-r from-blue-600 to-purple-500 text-white hover:shadow-2xl transition-all ease-linear duration-300 rounded-md p-3.5 text-lg" href="https://sistema.liguetalk.com.br/index.php">Logar</a>
           </div>
         </div>
       </nav>
