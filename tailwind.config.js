@@ -1,9 +1,8 @@
 module.exports = {
-  mode: 'jit',
-  purge: [
-    './public/**/*.html',
-    './src/**/*.{js,jsx,ts,tsx,vue}',
-  ],
+  purge: {
+    enabled: true,
+    content: ['*.php'],
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},

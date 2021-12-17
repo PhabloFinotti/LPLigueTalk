@@ -24,27 +24,77 @@ try {
     //Server settings
     $mail->SMTPDebug = 0;                      //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->Host       = 'mail.liguetalk.com.br';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'phablofinottimartins@gmail.com';                     //SMTP username
-    $mail->Password   = 'phabloGmail2';                               //SMTP password
+    $mail->Username   = 'atendimento@liguetalk.com.br';                     //SMTP username
+    $mail->Password   = 'ligu3t@lk2021';                               //SMTP password
     $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('phablofinottimartins@gmail.com', 'Mailer');
-    $mail->addAddress('phablofinottimartins@gmail.com', 'Phablinho');     //Add a recipient
+    $mail->setFrom('atendimento@liguetalk.com.br', 'Atendimento Landing Page');
+    $mail->addAddress('comercial@liguetalk.com.br');     //Add a recipient
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Teste';
-    $mail->Body    = 'Esse é um teste de email com PHP Mailer<br>' . $_POST['nome'] . ' + '. $_POST['email'] . ' + ' . $_POST['telefone'];
+    $mail->Subject = 'Enviado pela Landing Page';
+
+
+
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $telefone = $_POST['telefone'];
+    $mensagem = $_POST['mensagem'];
+    $data_envio = date('d/m/Y');
+    $hora_envio = date('H:i:s');
+
+    $mail->Body= "
+        <style type='text/css'>
+            body {
+                margin: 0px;
+                font-family: Verdane;
+                font-size: 14px;
+                color: #333;
+            }
+
+            a {
+                color: #8354E9;
+                text-decoration: underline;
+            }
+
+            a:hover {
+                color: initial;
+                text-decoration: underline;
+            }
+        </style>
+
+        <html>
+            <table width='510' border='1' cellpadding='1' cellspacing='1' bgcolor='#eee'>
+                <tr>
+                    <td width='500'>Nome: <b>$nome</b></td>
+                </tr>
+                <tr>
+                    <td width='320'>E-mail: <b>$email</b></td>
+                </tr>
+                <tr>
+                    <td width='320'>Telefone: <b>$telefone</b></td>
+                </tr>
+                <tr>
+                    <td width='320'>Mensagem: $mensagem</td>
+                </tr>
+                <tr>
+                    <td>Este e-mail foi enviado em <b>$data_envio</b> às <b>$hora_envio</b></td>
+                </tr>
+            </table>
+        </html>
+        ";
+    
 
     if( $captchaSuccess ){
         $errors = $mail->send();
     }
 
-    if($errors == 11){
+    if($errors == true){
         echo '
             {
                 "title": "Sucesso!",

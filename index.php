@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TailWind LigueTalk</title>
 
-    <link href="tailwind.css" rel="stylesheet" />
+    <link rel="stylesheet" href="tailwind.css">
     <link rel="stylesheet" href="style.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
@@ -254,7 +254,7 @@
               telefone.css('border', 'none')
               mensagem.css('border', 'none')
 
-              alert('O campo de email precisa ter @ ou .!')
+              alert('O campo de email precisa ter @ e .!')
 
             }else if(mensagem.val().length == 0){
               mensagem.css('border','2px solid #ef4444');
