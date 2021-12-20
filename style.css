@@ -53,6 +53,10 @@ footer div:first-child {
     box-shadow: 0 0px 30px 0px rgba(0, 0, 0, 0.4);
 }
 
+.placeholder-red::-webkit-input-placeholder{
+  color: #ef4444;
+}
+
 
 @layer components{
   #funcionamento{
@@ -76,11 +80,11 @@ footer div:first-child {
   }
 
   form input{
-    @apply rounded py-3 px-4 text-center text-gray-600 font-semibold focus:outline-none w-full md:w-11/12 col-span-2;
+    @apply rounded py-3 px-4 text-center text-gray-600 font-semibold focus:outline-none w-full md:w-11/12 col-span-2 focus:outline-none;
   }
 
   form textarea{
-    @apply rounded py-3 px-4 text-center text-gray-600 font-semibold focus:outline-none w-full md:w-11/12 col-span-2 h-20 sm:h-28 mx-auto resize-y;
+    @apply rounded py-3 px-4 text-center text-gray-600 font-semibold focus:outline-none w-full md:w-11/12 col-span-2 h-20 sm:h-28 mx-auto resize-y focus:outline-none;
   }
 
   form button{

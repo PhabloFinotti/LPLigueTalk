@@ -744,6 +744,8 @@ form input{
 form input:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 @media (min-width: 768px) {
@@ -771,6 +773,8 @@ form textarea{
 }
 
 form textarea:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
@@ -1283,6 +1287,10 @@ form button:hover {
 
 footer div:first-child {
   box-shadow: 0 0px 30px 0px rgba(0, 0, 0, 0.4);
+}
+
+.placeholder-red::-webkit-input-placeholder{
+  color: #ef4444;
 }
 
 @media (min-width: 640px) {
