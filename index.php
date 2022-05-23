@@ -52,8 +52,10 @@
   </head>
   <body class="mt-28">
     <header id="topo">
-      <nav class="fixed inset-x-0 top-0">
-        <div class="relative bg-white top-0 inset-x-0 z-10 flex p-5 md:px-12 lg:px-16 xl:max-w-screen-2xl xl:mx-auto justify-between items-center border-b shadow-md">
+      <!-- <nav class="fixed inset-x-0 top-0">
+        <div class="relative container bg-white top-0 inset-x-0 z-10 flex p-5 md:px-12 lg:px-16 xl:mx-auto justify-between items-center border-b shadow-md"> -->
+      <nav class="fixed inset-x-0 top-0 bg-white w-full border-b shadow-md">
+        <div class="relative container top-0 inset-x-0 z-[9999999] flex p-5 md:px-6 lg:px-12 mx-auto justify-between items-center">
           <figure>
             <a href="#introducao" class="scroll">
               <img class="h-14 w-full" src="img/logo.png" alt="Logo LigueTalk" />
