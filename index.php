@@ -54,8 +54,8 @@
     <header id="topo">
       <!-- <nav class="fixed inset-x-0 top-0">
         <div class="relative container bg-white top-0 inset-x-0 z-10 flex p-5 md:px-12 lg:px-16 xl:mx-auto justify-between items-center border-b shadow-md"> -->
-      <nav class="fixed inset-x-0 top-0 bg-white w-full border-b shadow-md">
-        <div class="relative container top-0 inset-x-0 z-[9999999] flex p-5 md:px-6 lg:px-12 mx-auto justify-between items-center">
+      <nav class="fixed inset-x-0 top-0 bg-white w-full border-b shadow-md" style="z-index:99999;">
+        <div class="relative container top-0 inset-x-0 flex p-5 md:px-6 lg:px-12 mx-auto justify-between items-center" >
           <figure>
             <a href="#introducao" class="scroll">
               <img class="h-14 w-full" src="img/logo.png" alt="Logo LigueTalk" />
@@ -90,7 +90,7 @@
       </nav>
     </header>
 
-    <div id="introducao" class="container mx-auto p-4 px-12">
+    <div id="introducao" class="container mx-auto p-4 px-12 overflow-x-hidden">
       <div class="grid grid-cols-1 md:grid-cols-2 sm:px-12 sm:py-12 sm:gap-x-8 md:py-16">
         <div data-sal="flip-right" data-sal-delay="300" data-sal-easing="ease" style="--sal-duration: 600ms;" class="w-full p-3">
           <img class="mx-auto w-full lg:max-w-xl" src="img/pc.png" alt="" />
@@ -143,12 +143,14 @@
     </div>
 
     <!-- Citação -->
-    <div data-sal="slide-up" data-sal-delay="600" data-sal-easing="ease" style="--sal-duration: 1s;" class="w-full bg-gradient-to-r from-blue-600 to-purple-500">
-      <h2 class="px-4 py-16 leading-snug align-middle sm:py-14 font-bold text-white text-3xl italic sm:text-4xl text-center">"Uma ferramenta útil para todo tipo de Contact Center"</h2>
+    <div class="overflow-x-hidden">
+      <div data-sal="slide-up" data-sal-delay="600" data-sal-easing="ease" style="--sal-duration: 1s;" class="w-full bg-gradient-to-r from-blue-600 to-purple-500">
+        <h2 class="px-4 py-16 leading-snug align-middle sm:py-14 font-bold text-white text-3xl italic sm:text-4xl text-center">"Uma ferramenta útil para todo tipo de Contact Center"</h2>
+      </div>
     </div>
 
     <!-- Pontos Chave -->
-    <div id="funcionamento">
+    <div id="funcionamento" class="overflow-x-hidden">
       <article data-sal="slide-right" data-sal-delay="300" data-sal-easing="ease" style="--sal-duration: 1s;" class="p-7 text-center">
         <div>
           <i class="bi bi-record-circle iconeBS text-8xl"></i>
@@ -359,7 +361,44 @@
     </footer>
 
 
+    <div class="fixed bottom-5 right-5 md:bottom-10 md:right-10 z-10" id="popup__wrapper">
+      <button id="btn__popup" target="_blank">
+        <span class="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-blue-600 opacity-75 left-0 top-0" style="z-index:-1;"></span>
+        <div class="rounded-full p-3 bg-blue-600 hover:bg-blue-700 flex justify-center items-center text-white transition-all duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 md:h-10 md:w-10" fill="white" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+            <path d="M492.438,397.75l-2.375-7.156c-5.625-16.719-24.063-34.156-41-38.75l-62.688-17.125c-17-4.625-41.25,1.594-53.688,14.031  L310,371.438c-82.453-22.281-147.109-86.938-169.359-169.375l22.688-22.688c12.438-12.438,18.656-36.656,14.031-53.656L160.266,63  c-4.625-16.969-22.094-35.406-38.781-40.969l-7.156-2.406c-16.719-5.563-40.563,0.063-53,12.5L27.391,66.094  c-6.063,6.031-9.938,23.281-9.938,23.344C16.266,197.188,58.516,301,134.734,377.219c76.031,76.031,179.453,118.219,286.891,117.313  c0.563,0,18.313-3.813,24.375-9.844l33.938-33.938C492.375,438.313,498,414.469,492.438,397.75z"/>
+          </svg>
+        </div>
+      </button>
+
+      <div id="popupTelefone" class="hidden absolute right-full w-max z-20 shadow-lg hover:shadow-xl cursor-pointer rounded-lg bg-white p-6 group transition-all duration-300" style="top:-130%;">
+        <a href="tel:+08008789668" target="_blank">
+          <h3 class="font-bold text-blue-700 text-xl group-hover:text-blue-500 transition-all duration-300">Nos ligue!</h3>
+          <address>0800 878 9668</address>
+        </a>
+        
+      </div>
+    </div>
+
+
     <script>sal();</script>
+
+    <script>
+      $(function(){
+        $('#btn__popup').click(function(e){
+          e.preventDefault();
+          $('#popupTelefone').toggleClass('hidden');
+        })
+
+        $(window).on('click', function(event){
+          if(!$('#popupTelefone').hasClass('hidden')){
+            if($(event.target).closest('#popup__wrapper').length == 0){
+              $('#popupTelefone').addClass('hidden');
+            }
+          }
+        })
+      })
+    </script>
 
     <!-- <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 

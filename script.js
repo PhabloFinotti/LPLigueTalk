@@ -1,6 +1,5 @@
 // import sal from './node_modules/sal.js/dist/sal'
 
-// sal();
 
 $(function () {
         $(window).resize(function(){
